@@ -10,7 +10,12 @@ https://stackoverflow.com/questions/36757949/json-schema-definition-for-array-of
 '''
 
 
-def json_validation_delisted_company(json):
+def json_validation_delisted_company(json: dict):
+    '''
+
+    :param json: dict
+    :return: -
+    '''
     schema = {
         'type': 'array',
         'items': {
@@ -35,7 +40,12 @@ def json_validation_delisted_company(json):
         print("Given JSON string is InValid")
 
 
-def json_validation_history_dividends(json):
+def json_validation_history_dividends(json: dict):
+    '''
+
+    :param json: dict
+    :return:
+    '''
     schema = {
         'type': 'object',
         'items': {
