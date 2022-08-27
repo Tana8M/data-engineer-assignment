@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
   docker-postgresql:
@@ -22,6 +22,8 @@ services:
       - "6000:6000"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 
   docker-etl:
@@ -40,8 +42,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./pipeline:/opt/dagster/etl
-#    links:
-#      - database-postgresql
 
 
   docker-dagit:
@@ -68,7 +68,7 @@ services:
       DAGSTER_POSTGRES_PASSWORD: "password"
       DAGSTER_POSTGRES_DB: "podpoint"
       HOSTNAME_etl: "docker-etl"
-      DAGSTER_NETWORK: "data-engineer-assignment" # Variable needs to be written as container DNS name in ECS
+      DAGSTER_NETWORK: "data-engineer-assignment_default" # Variable needs to be written as container DNS name in ECS
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
@@ -90,7 +90,7 @@ services:
       DAGSTER_POSTGRES_PASSWORD: "password"
       DAGSTER_POSTGRES_DB: "podpoint"
       HOSTNAME_etl: "docker-etl"
-      DAGSTER_NETWORK: "data-engineer-assignment" # Variable needs to be written as container DNS name in ECS
+      DAGSTER_NETWORK: "data-engineer-assignment_default" # Variable needs to be written as container DNS name in ECS
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
