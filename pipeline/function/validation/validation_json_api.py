@@ -38,6 +38,7 @@ def json_validation_delisted_company(json: dict):
     except ValueError as er:
         print(er)
         print("Given JSON string is InValid")
+    return json
 
 
 def json_validation_history_dividends(json: dict):
@@ -69,3 +70,4 @@ def json_validation_history_dividends(json: dict):
     except ValueError as er:
         print(er)
         print("Given JSON string is InValid")
+    return json

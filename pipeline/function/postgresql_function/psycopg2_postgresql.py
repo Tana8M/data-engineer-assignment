@@ -100,14 +100,14 @@ class PsycopgPostgresWarehouse:
         values = [cursor.mogrify("(" + add + ")", tup).decode('utf8') for tup in tpls]
         sql = "INSERT INTO %s(%s) VALUES " % (table, cols) + ",".join(values)
         # print(function)
-        try:
-            cursor.execute(sql)
+        # try:
+        cursor.execute(sql)
             # print(cursor.execute(function))
-            conn.commit()
-            print("Data inserted using execute_mogrify() successfully.")
-            cursor.close()
-        except (Exception, psy.DatabaseError):
-            print(psy.DatabaseError)
-            print("Error")
-            cursor.close()
-            pass
+        conn.commit()
+        print("Data inserted using execute_mogrify() successfully.")
+        cursor.close()
+        # except (Exception, psy.DatabaseError):
+        #     print(psy.DatabaseError)
+        #     print("Error")
+        #     cursor.close()
+        #     pass
