@@ -10,21 +10,8 @@ services:
       POSTGRES_DB: "podpoint"
     ports: 
       - "5432:5432"
-
-  database-postgresql:
-    image: postgres:14
-    container_name: database-postgresql
-    environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgrespw"
-      POSTGRES_DB: "postgres"
-    ports:
-      - "6000:6000"
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
 
   docker-etl:
     build:
@@ -38,10 +25,15 @@ services:
       DAGSTER_POSTGRES_PASSWORD: "password"
       DAGSTER_POSTGRES_DB: "podpoint"
       DAGSTER_CURRENT_IMAGE: "docker-etl"
-      DATABASE_HOST: "host.docker.internal"
+#      PROD_HOST: "database-postgresql"
+#      PROD_DATABASE: "postgres"
+#      PROD_PORT: "6000"
+#      PROD_USER: "postgres"
+#      PROD_PW: "postgrespw"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./pipeline:/opt/dagster/etl
+
 
 
   docker-dagit:

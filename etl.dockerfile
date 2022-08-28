@@ -18,12 +18,12 @@ ENV API_KEY="10c0c76dfaabef8d2ba52d1fb7e5bf8d"
 ENV SLACK_CH='C03VBDF4DHT'
 ENV SLACK_BOT_API="xoxb-3855764521027-3997431744533-85uJ2S3oSD0DjlNX2sTzrHax"
 # Set Production Database to Environment
-ENV PROD_HOST="host.docker.internal"
-#ENV PROD_HOST="database-postgresql"
-ENV PROD_DATABASE="postgres"
-ENV PROD_PORT="6000"
-ENV PROD_USER="postgres"
-ENV PROD_PW="postgrespw"
+#ENV PROD_HOST="host.docker.internal"
+ENV PROD_HOST="docker-postgresql"
+ENV PROD_DATABASE="podpoint"
+ENV PROD_PORT="5432"
+ENV PROD_USER="pod"
+ENV PROD_PW="password"
 # Set $DAGSTER_HOME and copy dagster instance there
 ENV DAGSTER_HOME=/opt/dagster/dagster_home
 
