@@ -25,11 +25,6 @@ services:
       DAGSTER_POSTGRES_PASSWORD: "password"
       DAGSTER_POSTGRES_DB: "podpoint"
       DAGSTER_CURRENT_IMAGE: "docker-etl"
-#      PROD_HOST: "database-postgresql"
-#      PROD_DATABASE: "postgres"
-#      PROD_PORT: "6000"
-#      PROD_USER: "postgres"
-#      PROD_PW: "postgrespw"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./pipeline:/opt/dagster/etl
